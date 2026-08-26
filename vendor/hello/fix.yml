@@ -1,0 +1,16 @@
+# hello — the smallest possible fix package: one C file, one build step.
+
+package:
+  name: hello
+  version: 1.0.0
+  description: Classic greeting program (fix's hello-world)
+
+source:
+  type: local
+
+build:
+  steps:
+    - "cc -O2 -Wall -o %(out)s/bin/hello hello.c"
+
+env:
+  HELLO_DOC: "%(out)s/share"

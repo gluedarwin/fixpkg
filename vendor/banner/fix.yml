@@ -1,0 +1,14 @@
+# banner — a tiny figlet-style banner printer, no dependencies.
+
+package:
+  name: banner
+  version: 1.0.0
+  description: Print big ASCII-letter banners (mini figlet)
+
+source:
+  type: local
+
+build:
+  steps:
+    - "cc -O2 -Wall -o %(out)s/bin/banner banner.c"
+    - 'banner_text="$(%(out)s/bin/banner FIX)" && printf ''%s\n'' "$banner_text" > %(out)s/share/logo.txt'

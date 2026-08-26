@@ -1,0 +1,22 @@
+# greet — demonstrates a build-time dependency: its build script invokes the
+# `banner` binary from the dep's store path to bake an ASCII banner into the
+# output at build time. Note %(dep:banner)s interpolation + FIX_DEP_BANNER.
+
+package:
+  name: greet
+  version: 1.2.0
+  description: Friendly greeter that bakes a banner (built by its dep) into the binary
+
+depends:
+  banner: "*"
+
+source:
+  type: local
+
+build:
+  steps:
+    - "bash gen.sh %(dep:banner)s %(out)s"
+
+env:
+  GREET_BANNER: "%(out)s/share/greet/banner.txt"
+  GREET_BANNER_TOOL: "%(dep:banner)s/bin/banner"

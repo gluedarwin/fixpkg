@@ -1,0 +1,9 @@
+# examples/fix.yml — copy into a project dir (next to a vendor/ repo)
+# and run:  fix shell
+
+packages:
+  - hello
+  - banner
+  - greet
+
+shell: example
