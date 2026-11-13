@@ -1,0 +1,13 @@
+# Build outputs
+build/
+dist/
+fix.spec
+/fix
+.venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# fix.yml backups written by `fix install` / `fix remove`
+*.bak
