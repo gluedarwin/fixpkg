@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -171,6 +172,10 @@ footer{
     <div class="tagline">
         A simple, source-based and declarative package manager.
     </div>
+
+    <div class="tagline">
+        Current version: 0.4.0
+    </div>
 </header>
 
 
@@ -187,7 +192,7 @@ footer{
         simpler and more approachable design.
     </p>
 
-    <a href="https://github.com/gluedarwin/fix" class="button" target="_blank" rel="noopener">
+    <a href="https://github.com/gluedarwin/fixpkg" class="button" target="_blank" rel="noopener">
         View Source
     </a>
 
@@ -216,7 +221,9 @@ footer{
         <h3>Reproducible</h3>
         <p>
             Keep the environment definition in a file so it can be recreated
-            consistently across systems.
+            consistently on the same toolchain. Builds use best-effort
+            isolation on Linux when bwrap is available and run unisolated
+            otherwise — only build recipes you trust.
         </p>
     </div>
 
@@ -389,6 +396,52 @@ Entering fix environment...
 
 <section class="section">
 
+    <h2>Install</h2>
+
+    <p>
+        There is no prebuilt binary committed to the repository — build one
+        first. From source, fix needs only Python 3.8 or later.
+    </p>
+
+    <div class="code">
+$ bash scripts/build_binary.sh   # test → compile → re-test; produces ./fix
+$ ./fix --version                # self-contained binary, no Python needed
+$ sudo make install              # optional: copy to /usr/local/bin
+
+$ python3 fix.py --version       # or run straight from source
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Commands</h2>
+
+    <p>
+        The main commands — see <span style="color:#d7d7db;">fix help</span> for the full list.
+    </p>
+
+    <div class="code">
+fix init [--shell NAME] [pkg...]   create a new environment
+fix install &lt;pkg...&gt;              add packages and build them from source
+fix shell [-- cmd]                 enter the environment (or run one command)
+fix build [-f]                     build every package in fix.yml
+fix remove &lt;pkg...&gt;               remove packages (refuses if depended on)
+fix upgrade                        rebuild every package from scratch
+fix tree                           show the dependency graph
+fix status                         recorded state: hashes, store paths, sizes
+fix search &lt;term&gt;                 search the configured repos
+fix path [pkg]                     print store path(s)
+fix gc [--dry-run]                 collect unreachable store entries
+fix doctor                         sanity-check toolchain, store &amp; permissions
+    </div>
+
+</section>
+
+
+<section class="section">
+
     <h2>Get Involved</h2>
 
     <div class="grid">
@@ -397,7 +450,7 @@ Entering fix environment...
             <h3>Source Code</h3>
 
             <p>
-                <a href="https://github.com/gluedarwin/fix" target="_blank" rel="noopener">
+                <a href="https://github.com/gluedarwin/fixpkg" target="_blank" rel="noopener">
                     GitHub Repository
                 </a>
             </p>

@@ -11,6 +11,7 @@ source:
 build:
   steps:
     - "cc -O2 -Wall -o %(out)s/bin/hello hello.c"
+    - "mkdir -p %(out)s/share/hello && cp hello.txt %(out)s/share/hello/README.txt"
 
 env:
-  HELLO_DOC: "%(out)s/share"
+  HELLO_DOC: "%(out)s/share/hello/README.txt"

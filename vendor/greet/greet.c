@@ -20,6 +20,11 @@ int main(int argc, char **argv)
         while ((c = fgetc(f)) != EOF)
             putchar(c);
         fclose(f);
+    } else if (GREET_BANNER_FILE[0] != '\0') {
+        /* A baked-in banner path that cannot be opened is a build/packaging
+         * problem, not a reason to silently print a bare greeting. */
+        fprintf(stderr, "greet: warning: cannot open banner file '%s'\n",
+                GREET_BANNER_FILE);
     }
     printf("greetings, %s!\n", who);
     return 0;

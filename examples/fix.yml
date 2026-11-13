@@ -1,5 +1,10 @@
-# examples/fix.yml — copy into a project dir (next to a vendor/ repo)
-# and run:  fix shell
+# examples/fix.yml — works from this directory: `repos:` points at the
+# repo's vendor/ (repo lookup order is `repos:` entries, then ./vendor/,
+# then ~/.fix/repo/). Run:  fix build   or   fix shell
+# (Run it from this directory, e.g. `cd examples && python3 ../fix.py build`.)
+
+repos:
+  shared: ../vendor
 
 packages:
   - hello
