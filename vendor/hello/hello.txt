@@ -1,0 +1,3 @@
+hello 1.0.0 — fix's hello-world package.
+Prints a greeting; built from source by fix.
+See HELLO_DOC for the installed location of this file.
